@@ -8,3 +8,14 @@ before do
     Count.create(number: 0)
   end
 end
+
+get '/' do
+  @number = Count.first
+  erb :index
+end
+
+post '/plus' do
+  Count.number = Count.number + 1
+  @number = Count.first
+  redirect '/'
+end  
